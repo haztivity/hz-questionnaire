@@ -8,7 +8,8 @@ import {
     ResourceController,
     EventEmitterFactory,
     ScormService,
-    NavigatorService
+    NavigatorService,
+    DataOptions
 } from "@haztivity/core";
 import "jquery-ui-dist/jquery-ui";
 import "jq-questionnaire";
@@ -19,7 +20,8 @@ import "jq-questionnaire";
             $,
             EventEmitterFactory,
             ScormService,
-            NavigatorService
+            NavigatorService,
+            DataOptions
         ]
     }
 )
@@ -31,6 +33,9 @@ export class HzQuestionnaireResource extends ResourceController {
     public static readonly ON_END = `${HzQuestionnaireResource.NAMESPACE}:end`;
     protected static readonly PREFIX = "hz-questionnaire";
     protected static readonly CLASS_COMPONENT = HzQuestionnaireResource.PREFIX;
+    protected static readonly DEFAULT_QUESTIONNAIRE = {
+
+    };
     protected static readonly _DEFAULTS = {
         locale: {
             "es": {
@@ -53,15 +58,17 @@ export class HzQuestionnaireResource extends ResourceController {
      * div(data-hz-component="HzHeader")
      *      h1(data-hz-header-title)
      */
-    constructor(_$: JQueryStatic, _EventEmitterFactory,protected _ScormService:ScormService,protected _NavigatorService:NavigatorService) {
+    constructor(_$: JQueryStatic, _EventEmitterFactory,protected _ScormService:ScormService,protected _NavigatorService:NavigatorService, protected _DataOptions) {
         super(_$, _EventEmitterFactory);
     }
 
     init(options, config?) {
         this._options = options;
         this._config = config;
-        this._$element.jqQuestionnaire(this._options);
-        this._instance = this._$element.data("uiJqQuestionnaire");
+        let questionnaireOptions = this._DataOptions.getDataOptions(this._$element, "jqQuestionnaire");
+        this._options.questionnaire = this._$.extend(true,{}, HzQuestionnaireResource.DEFAULT_QUESTIONNAIRE, questionnaireOptions);
+        this._$element.jqQuestionnaire(questionnaireOptions);
+        this._instance = this._$element.jqQuestionnaire("instance");
         this._id = this._instance.getId();
         this._initScorm();
         this._assignEvents();

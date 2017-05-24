@@ -22,7 +22,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 var core_1 = require("@haztivity/core");
 require("jquery-ui-dist/jquery-ui");
-require("./jqQuestionnaire/jquery.questionnaire");
+require("jq-questionnaire");
 var HzQuestionnaireResource = HzQuestionnaireResource_1 = (function (_super) {
     __extends(HzQuestionnaireResource, _super);
     /**
@@ -34,17 +34,20 @@ var HzQuestionnaireResource = HzQuestionnaireResource_1 = (function (_super) {
      * div(data-hz-component="HzHeader")
      *      h1(data-hz-header-title)
      */
-    function HzQuestionnaireResource(_$, _EventEmitterFactory, _ScormService, _NavigatorService) {
+    function HzQuestionnaireResource(_$, _EventEmitterFactory, _ScormService, _NavigatorService, _DataOptions) {
         var _this = _super.call(this, _$, _EventEmitterFactory) || this;
         _this._ScormService = _ScormService;
         _this._NavigatorService = _NavigatorService;
+        _this._DataOptions = _DataOptions;
         return _this;
     }
     HzQuestionnaireResource.prototype.init = function (options, config) {
         this._options = options;
         this._config = config;
-        this._$element.jqQuestionnaire(this._options);
-        this._instance = this._$element.data("uiJqQuestionnaire");
+        var questionnaireOptions = this._DataOptions.getDataOptions(this._$element, "jqQuestionnaire");
+        this._options.questionnaire = this._$.extend(true, {}, HzQuestionnaireResource_1.DEFAULT_QUESTIONNAIRE, questionnaireOptions);
+        this._$element.jqQuestionnaire(questionnaireOptions);
+        this._instance = this._$element.jqQuestionnaire("instance");
         this._id = this._instance.getId();
         this._initScorm();
         this._assignEvents();
@@ -140,6 +143,7 @@ HzQuestionnaireResource.ON_STARTED = HzQuestionnaireResource_1.NAMESPACE + ":sta
 HzQuestionnaireResource.ON_END = HzQuestionnaireResource_1.NAMESPACE + ":end";
 HzQuestionnaireResource.PREFIX = "hz-questionnaire";
 HzQuestionnaireResource.CLASS_COMPONENT = HzQuestionnaireResource_1.PREFIX;
+HzQuestionnaireResource.DEFAULT_QUESTIONNAIRE = {};
 HzQuestionnaireResource._DEFAULTS = {
     locale: {
         "es": {
@@ -156,7 +160,8 @@ HzQuestionnaireResource = HzQuestionnaireResource_1 = __decorate([
             core_1.$,
             core_1.EventEmitterFactory,
             core_1.ScormService,
-            core_1.NavigatorService
+            core_1.NavigatorService,
+            core_1.DataOptions
         ]
     })
 ], HzQuestionnaireResource);
