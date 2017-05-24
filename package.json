@@ -1,0 +1,48 @@
+{
+  "name": "@haztivity/hz-questionnaire",
+  "version": "0.6.2",
+  "description": "Componente cuestionario para haztivity",
+  "main": "index.js",
+  "module": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/davinchi_finsi/hzcarousel"
+  },
+  "author": "Davinchi",
+  "license": "ISC",
+  "homepage": "",
+  "directories": {
+    "typings": "src"
+  },
+  "types": "index.ts",
+  "typings": "index.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@haztivity/core": "^0.6.1",
+    "jq-questionnaire": "^0.2.0",
+    "jquery-ui-dist": "^1.12.1"
+  },
+  "devDependencies": {
+    "@haztivity/cli": "^0.2.3",
+    "@haztivity/hz-navbar": "^0.6.1",
+    "@types/core-js": "^0.9.35",
+    "@types/jquery": "^2.0.34",
+    "@types/loglevel": "^1.4.29",
+    "@types/prismjs": "^1.6.2",
+    "@types/string": "0.0.28",
+    "autoprefixer": "^6.5.1",
+    "commander": "^2.9.0",
+    "jstransformer-markdown-it": "^2.0.0",
+    "merge2": "^1.0.2",
+    "postcss": "^5.2.4",
+    "prismjs": "^1.6.0",
+    "pug": "^2.0.0-beta6",
+    "require-dir": "^0.3.0",
+    "typescript": "^2.1.1"
+  }
+}
