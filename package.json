@@ -1,6 +1,6 @@
 {
   "name": "@haztivity/hz-questionnaire",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "Componente cuestionario para haztivity",
   "main": "index.js",
   "module": "index.js",
@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@haztivity/core": "^0.6.1",
-    "jq-questionnaire": "^0.2.0",
+    "jq-questionnaire": "^0.3.0",
     "jquery-ui-dist": "^1.12.1"
   },
   "devDependencies": {
