@@ -2,9 +2,10 @@
   "name": "@haztivity/hz-questionnaire",
   "version": "0.6.4",
   "description": "Componente cuestionario para haztivity",
-  "main": "index.js",
-  "module": "index.js",
+  "main": "dist/HzQuestionnaire.js",
+  "module": "dist/HzQuestionnaire.js",
   "scripts": {
+    "build":"tsc -p src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,32 +18,32 @@
   "directories": {
     "typings": "src"
   },
-  "types": "index.ts",
-  "typings": "index.ts",
+  "types": "src/HzQuestionnaire.ts",
+  "typings": "src/HzQuestionnaire.ts",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@haztivity/core": "^0.6.1",
+    "@haztivity/core": "^0.6.5",
     "jq-questionnaire": "^0.3.0",
     "jquery-ui-dist": "^1.12.1"
   },
   "devDependencies": {
-    "@haztivity/cli": "^0.2.3",
-    "@haztivity/hz-navbar": "^0.6.1",
-    "@types/core-js": "^0.9.35",
-    "@types/jquery": "^2.0.34",
+    "@haztivity/cli": "^0.2.5",
+    "@haztivity/hz-navbar": "^0.6.3",
+    "@types/core-js": "^0.9.41",
+    "@types/jquery": "^3.2.5",
     "@types/loglevel": "^1.4.29",
     "@types/prismjs": "^1.6.2",
     "@types/string": "0.0.28",
-    "autoprefixer": "^6.5.1",
-    "commander": "^2.9.0",
+    "autoprefixer": "^7.1.1",
+    "commander": "^2.10.0",
     "jstransformer-markdown-it": "^2.0.0",
-    "merge2": "^1.0.2",
-    "postcss": "^5.2.4",
+    "merge2": "^1.0.3",
+    "postcss": "^6.0.3",
     "prismjs": "^1.6.0",
-    "pug": "^2.0.0-beta6",
-    "require-dir": "^0.3.0",
-    "typescript": "^2.1.1"
+    "pug": "^2.0.0-rc.2",
+    "require-dir": "^0.3.2",
+    "typescript": "^2.3.4"
   }
 }
