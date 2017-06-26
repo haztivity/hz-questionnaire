@@ -1,11 +1,11 @@
 {
   "name": "@haztivity/hz-questionnaire",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "Componente cuestionario para haztivity",
   "main": "dist/HzQuestionnaire.js",
   "module": "dist/HzQuestionnaire.js",
   "scripts": {
-    "build":"tsc -p src",
+    "build": "tsc -p src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
