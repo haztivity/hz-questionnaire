@@ -116,7 +116,7 @@ export class HzQuestionnaireResource extends ResourceController {
     protected _onEnd(e,jqQuestionnaireInstance,calification){
         let instance = e.data.instance;
         if(instance._ScormService.LMSIsInitialized()){
-            instance._ScormService.doLMSSetValue(`cmi.objectives.${instance._objectiveIndex}.score.raw`,calification.points);
+            instance._ScormService.doLMSSetValue(`cmi.objectives.${instance._objectiveIndex}.score.raw`,calification.score);
             instance._ScormService.doLMSSetValue(`cmi.objectives.${instance._objectiveIndex}.status`,calification.success ? "passed" : "failed");
             instance._ScormService.doLMSCommit();
         }

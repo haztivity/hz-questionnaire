@@ -23,7 +23,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@haztivity/core");
 require("jquery-ui-dist/jquery-ui");
 require("jq-questionnaire");
-var HzQuestionnaireResource = HzQuestionnaireResource_1 = (function (_super) {
+var HzQuestionnaireResource = (function (_super) {
     __extends(HzQuestionnaireResource, _super);
     /**
      * Recurso de cuestionario. Encapsula jquery.questionnaire
@@ -41,6 +41,7 @@ var HzQuestionnaireResource = HzQuestionnaireResource_1 = (function (_super) {
         _this._DataOptions = _DataOptions;
         return _this;
     }
+    HzQuestionnaireResource_1 = HzQuestionnaireResource;
     HzQuestionnaireResource.prototype.init = function (options, config) {
         this._options = options;
         this._config = config;
@@ -92,7 +93,7 @@ var HzQuestionnaireResource = HzQuestionnaireResource_1 = (function (_super) {
     HzQuestionnaireResource.prototype._onEnd = function (e, jqQuestionnaireInstance, calification) {
         var instance = e.data.instance;
         if (instance._ScormService.LMSIsInitialized()) {
-            instance._ScormService.doLMSSetValue("cmi.objectives." + instance._objectiveIndex + ".score.raw", calification.points);
+            instance._ScormService.doLMSSetValue("cmi.objectives." + instance._objectiveIndex + ".score.raw", calification.score);
             instance._ScormService.doLMSSetValue("cmi.objectives." + instance._objectiveIndex + ".status", calification.success ? "passed" : "failed");
             instance._ScormService.doLMSCommit();
         }
@@ -134,37 +135,37 @@ var HzQuestionnaireResource = HzQuestionnaireResource_1 = (function (_super) {
     HzQuestionnaireResource.prototype.getInstance = function () {
         return this._instance;
     };
+    HzQuestionnaireResource.NAMESPACE = "hzQuestionnaire";
+    HzQuestionnaireResource.ON_ANSWER = HzQuestionnaireResource_1.NAMESPACE + ":answer";
+    HzQuestionnaireResource.ON_START = HzQuestionnaireResource_1.NAMESPACE + ":start";
+    HzQuestionnaireResource.ON_STARTED = HzQuestionnaireResource_1.NAMESPACE + ":started";
+    HzQuestionnaireResource.ON_END = HzQuestionnaireResource_1.NAMESPACE + ":end";
+    HzQuestionnaireResource.PREFIX = "hz-questionnaire";
+    HzQuestionnaireResource.CLASS_COMPONENT = HzQuestionnaireResource_1.PREFIX;
+    HzQuestionnaireResource.DEFAULT_QUESTIONNAIRE = {};
+    HzQuestionnaireResource._DEFAULTS = {
+        locale: {
+            "es": {
+                next: "Siguiente",
+                prev: "Anterior"
+            }
+        },
+        defaultLang: "es"
+    };
+    HzQuestionnaireResource = HzQuestionnaireResource_1 = __decorate([
+        core_1.Resource({
+            name: "HzQuestionnaire",
+            dependencies: [
+                core_1.$,
+                core_1.EventEmitterFactory,
+                core_1.ScormService,
+                core_1.NavigatorService,
+                core_1.DataOptions
+            ]
+        })
+    ], HzQuestionnaireResource);
     return HzQuestionnaireResource;
+    var HzQuestionnaireResource_1;
 }(core_1.ResourceController));
-HzQuestionnaireResource.NAMESPACE = "hzQuestionnaire";
-HzQuestionnaireResource.ON_ANSWER = HzQuestionnaireResource_1.NAMESPACE + ":answer";
-HzQuestionnaireResource.ON_START = HzQuestionnaireResource_1.NAMESPACE + ":start";
-HzQuestionnaireResource.ON_STARTED = HzQuestionnaireResource_1.NAMESPACE + ":started";
-HzQuestionnaireResource.ON_END = HzQuestionnaireResource_1.NAMESPACE + ":end";
-HzQuestionnaireResource.PREFIX = "hz-questionnaire";
-HzQuestionnaireResource.CLASS_COMPONENT = HzQuestionnaireResource_1.PREFIX;
-HzQuestionnaireResource.DEFAULT_QUESTIONNAIRE = {};
-HzQuestionnaireResource._DEFAULTS = {
-    locale: {
-        "es": {
-            next: "Siguiente",
-            prev: "Anterior"
-        }
-    },
-    defaultLang: "es"
-};
-HzQuestionnaireResource = HzQuestionnaireResource_1 = __decorate([
-    core_1.Resource({
-        name: "HzQuestionnaire",
-        dependencies: [
-            core_1.$,
-            core_1.EventEmitterFactory,
-            core_1.ScormService,
-            core_1.NavigatorService,
-            core_1.DataOptions
-        ]
-    })
-], HzQuestionnaireResource);
 exports.HzQuestionnaireResource = HzQuestionnaireResource;
-var HzQuestionnaireResource_1;
 //# sourceMappingURL=HzQuestionnaireResource.js.map
