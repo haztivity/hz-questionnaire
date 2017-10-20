@@ -1,6 +1,6 @@
 {
   "name": "@haztivity/hz-questionnaire",
-  "version": "0.6.6",
+  "version": "0.6.7",
   "description": "Componente cuestionario para haztivity",
   "main": "dist/HzQuestionnaire.js",
   "module": "dist/HzQuestionnaire.js",

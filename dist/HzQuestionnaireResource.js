@@ -23,7 +23,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@haztivity/core");
 require("jquery-ui-dist/jquery-ui");
 require("jq-questionnaire");
-var HzQuestionnaireResource = (function (_super) {
+var HzQuestionnaireResource = /** @class */ (function (_super) {
     __extends(HzQuestionnaireResource, _super);
     /**
      * Recurso de cuestionario. Encapsula jquery.questionnaire
@@ -54,7 +54,6 @@ var HzQuestionnaireResource = (function (_super) {
         this._assignEvents();
     };
     HzQuestionnaireResource.prototype._initScorm = function () {
-        this._ScormService.doLMSInitialize();
         if (this._ScormService.LMSIsInitialized()) {
             var objectiveIndex = this._findObjectiveIndex(this._id);
             if (objectiveIndex == -1) {
